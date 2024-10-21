@@ -1,0 +1,6 @@
+@WebClinica.Api_HostAddress = http://localhost:5229
+
+GET {{WebClinica.Api_HostAddress}}/webclinica/
+Accept: application/json
+
+###
