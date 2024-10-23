@@ -1,6 +1,5 @@
 ﻿using WebClinica.Domain.Entities;
 using WebClinica.Infrastructure.Map;
-using WebClinica.Infrastructure.Query;
 
 namespace WebClinica.Infrastructure.Queries
 {
@@ -25,7 +24,7 @@ namespace WebClinica.Infrastructure.Queries
             return new QueryModel(query, parameters);
         }
 
-        public static QueryModel GetMedicoByIdQuery(int crm)
+        public static QueryModel GetMedicoByCrmQuery(int crm)
         {
             string table = ContextMapping.MedicoTable;
             string query = @$"

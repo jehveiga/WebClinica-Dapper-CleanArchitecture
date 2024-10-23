@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Dtos\ViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebClinica.Domain\WebClinica.Domain.csproj" />
+    <ProjectReference Include="..\WebClinica.Infrastructure\WebClinica.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
