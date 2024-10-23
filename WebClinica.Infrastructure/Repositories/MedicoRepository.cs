@@ -1,10 +1,14 @@
-﻿using WebClinica.Domain.Entities;
+﻿using System.Data;
+using WebClinica.Domain.Entities;
 using WebClinica.Domain.Interfaces.Repositories;
+using WebClinica.Infrastructure.Factory;
 
 namespace WebClinica.Infrastructure.Repositories
 {
-    public class MedicoRepository : IMedicoRepository
+    public class MedicoRepository(SqlFactory sqlFactory) : IMedicoRepository
     {
+        private readonly IDbConnection _connection = sqlFactory.CreateConnection();
+
         public Task<int> DeleteMedicoAsync(int id)
         {
             throw new NotImplementedException();
