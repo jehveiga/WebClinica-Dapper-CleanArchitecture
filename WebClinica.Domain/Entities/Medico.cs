@@ -10,6 +10,15 @@
             DataNascimento = dataNascimento;
         }
 
+        public Medico(int crm, string nome, char sexo, DateTime dataNascimento, int especialidadeId)
+        {
+            Crm = crm;
+            Nome = nome;
+            Sexo = sexo;
+            DataNascimento = dataNascimento;
+            EspecialidadeId = especialidadeId;
+        }
+
         public Medico(int crm, string nome, char sexo, DateTime dataNascimento, int especialidadeId, Especialidade especialidade)
         {
             Crm = crm;
