@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\WebClinica.Application\WebClinica.Application.csproj" />
     <ProjectReference Include="..\WebClinica.Infrastructure\WebClinica.Infrastructure.csproj" />
   </ItemGroup>

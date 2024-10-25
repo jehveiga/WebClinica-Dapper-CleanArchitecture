@@ -1,4 +1,4 @@
 ﻿namespace WebClinica.Application.Dtos.InputModels
 {
-    public record CreatedMedicoViewModel(int crm);
+    public record CreateMedicoInputModel(int Crm, string Nome, char Sexo, DateTime DataNascimento, int EspecialidadeId);
 }
