@@ -7,7 +7,7 @@ namespace WebClinica.Application.Business
     {
         public Task<IEnumerable<MedicoViewModel>> Obter();
         public Task<MedicoViewModel> ObterPeloCrm(int crm);
-        public Task Adicionar(CreateMedicoInputModel createMedicoInput);
+        public Task<CreatedMedicoViewModel> Adicionar(CreateMedicoInputModel createMedicoInput);
         public Task Alterar(int crm, UpdateMedicoInputModel updateMedicoInput);
         public Task Delete(int crm);
     }

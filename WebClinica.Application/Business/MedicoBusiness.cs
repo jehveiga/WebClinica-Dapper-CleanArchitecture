@@ -25,9 +25,13 @@ namespace WebClinica.Application.Business
             return medicoViewModel!;
 
         }
-        public Task Adicionar(CreateMedicoInputModel createMedicoInput)
+        public async Task<CreatedMedicoViewModel> Adicionar(CreateMedicoInputModel createMedicoInput)
         {
-            throw new NotImplementedException();
+            Medico medico = createMedicoInput.ToEntity();
+
+            int createdMedicoView = await medicoRepository.InsertMedicoAsync(medico);
+
+            return new CreatedMedicoViewModel(createdMedicoView);
         }
 
         public Task Alterar(int crm, UpdateMedicoInputModel updateMedicoInput)

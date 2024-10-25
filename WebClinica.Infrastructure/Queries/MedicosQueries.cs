@@ -52,13 +52,14 @@ namespace WebClinica.Infrastructure.Queries
         {
             string table = ContextMapping.MedicoTable;
             string query = @$"
-                INSERT INTO 
-                    {table}
+                INSERT INTO {table}
                     ([CRM], 
                     [NOME], 
                     [SEXO], 
                     [DATA_NASCIMENTO], 
                     [ID_ESP])
+                OUTPUT
+                    Inserted.Crm
                 VALUES
                     (
                         @Crm,

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebClinica.Application.Business;
+using WebClinica.Application.Dtos.InputModels;
 using WebClinica.Application.Dtos.ViewModels;
 
 namespace WebClinica.Api.Controllers
@@ -25,6 +26,14 @@ namespace WebClinica.Api.Controllers
                 return NotFound();
 
             return Ok();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Post(CreateMedicoInputModel createMedicoInput)
+        {
+            CreatedMedicoViewModel createdResult = await medicoBusiness.Adicionar(createMedicoInput);
+
+            return CreatedAtAction(nameof(Get), new { createdResult.Crm }, createdResult);
         }
     }
 }
