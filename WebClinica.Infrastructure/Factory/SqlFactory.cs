@@ -8,7 +8,7 @@ namespace WebClinica.Infrastructure.Factory
     {
         public IDbConnection CreateConnection()
         {
-            string connectionString = configuration.GetConnectionString("DefaultConnection");
+            string connectionString = configuration.GetConnectionString("DefaultConnection")!;
             return new SqlConnection(connectionString);
         }
     }

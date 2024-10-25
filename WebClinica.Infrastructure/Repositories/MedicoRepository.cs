@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using System.Data;
-using WebClinica.Application.Dtos.InputModels;
 using WebClinica.Domain.Entities;
 using WebClinica.Domain.Interfaces.Repositories;
 using WebClinica.Infrastructure.Factory;
@@ -32,9 +31,9 @@ namespace WebClinica.Infrastructure.Repositories
         {
             QueryModel query = MedicosQueries.InsertMedicoQuery(medico);
 
-            CreatedMedicoViewModel? result = await _connection.QueryFirstOrDefaultAsync<CreatedMedicoViewModel>(query.Query, query.Parameters);
+            int result = await _connection.QueryFirstOrDefaultAsync<int>(query.Query, query.Parameters);
 
-            return result!.crm;
+            return result;
         }
         public async Task<int> UpdateMedicoAsync(Medico medico, int crm)
         {

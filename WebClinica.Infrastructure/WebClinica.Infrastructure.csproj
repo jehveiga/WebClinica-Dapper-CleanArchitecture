@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WebClinica.Application\WebClinica.Application.csproj" />
     <ProjectReference Include="..\WebClinica.Domain\WebClinica.Domain.csproj" />
   </ItemGroup>
 
