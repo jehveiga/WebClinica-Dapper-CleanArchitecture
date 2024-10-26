@@ -33,6 +33,9 @@ namespace WebClinica.Api.Controllers
         {
             CreatedMedicoViewModel createdResult = await medicoBusiness.Adicionar(createMedicoInput);
 
+            if (createdResult is null)
+                return BadRequest();
+
             return CreatedAtAction(nameof(Get), new { createdResult.Crm }, createdResult);
         }
     }
