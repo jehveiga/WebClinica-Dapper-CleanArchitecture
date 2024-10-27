@@ -5,8 +5,8 @@ using WebClinica.Application.Dtos.ViewModels;
 
 namespace WebClinica.Api.Controllers
 {
-    [Route("api/medicos")]
     [ApiController]
+    [Route("api/medicos")]
     public class MedicosController(IMedicoBusiness medicoBusiness) : ControllerBase
     {
         [HttpGet]
@@ -25,7 +25,7 @@ namespace WebClinica.Api.Controllers
             if (medicoDto is null)
                 return NotFound();
 
-            return Ok();
+            return Ok(medicoDto);
         }
 
         [HttpPost]
@@ -37,6 +37,17 @@ namespace WebClinica.Api.Controllers
                 return BadRequest();
 
             return CreatedAtAction(nameof(Get), new { createdResult.Crm }, createdResult);
+        }
+
+        [HttpPut("{crm:int}")]
+        public async Task<ActionResult> Put(int crm, UpdateMedicoInputModel updateMedicoInput)
+        {
+            int updateResult = await medicoBusiness.Alterar(crm, updateMedicoInput);
+
+            if (updateResult == 0)
+                return BadRequest();
+
+            return Ok();
         }
     }
 }

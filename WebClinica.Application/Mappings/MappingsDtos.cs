@@ -12,7 +12,7 @@ namespace WebClinica.Api.Mappings
                                                    medico.Crm,
                                                    medico.Nome,
                                                    medico.Sexo,
-                                                   medico.DataNascimento,
+                                                   medico.DataNascimento.ToShortDateString(),
                                                    medico.EspecialidadeId
                                                    )).ToList();
 

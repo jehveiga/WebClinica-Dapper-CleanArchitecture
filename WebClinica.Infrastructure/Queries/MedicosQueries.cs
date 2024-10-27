@@ -100,7 +100,7 @@ namespace WebClinica.Infrastructure.Queries
 
             var parameters = new
             {
-                medico.Crm,
+                Crm = crm,
                 medico.Nome,
                 medico.Sexo,
                 medico.DataNascimento,

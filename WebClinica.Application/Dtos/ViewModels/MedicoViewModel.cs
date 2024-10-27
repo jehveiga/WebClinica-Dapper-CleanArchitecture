@@ -2,7 +2,7 @@
 
 namespace WebClinica.Application.Dtos.ViewModels
 {
-    public record MedicoViewModel(int Crm, string Nome, char Sexo, DateTime DataNascimento, int EspecialidadeId)
+    public record MedicoViewModel(int Crm, string Nome, char Sexo, string DataNascimento, int EspecialidadeId)
     {
         public static MedicoViewModel? FromEntity(Medico medico)
         {
@@ -13,7 +13,7 @@ namespace WebClinica.Application.Dtos.ViewModels
                 medico.Crm,
                 medico.Nome,
                 medico.Sexo,
-                medico.DataNascimento,
+                medico.DataNascimento.ToShortDateString(),
                 medico.EspecialidadeId
                 );
         }

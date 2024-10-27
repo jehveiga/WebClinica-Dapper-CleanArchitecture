@@ -20,7 +20,7 @@ namespace WebClinica.Application.Business
         {
             Medico? medicoDb = await medicoRepository.GetMedicoByCrmAsync(crm);
 
-            MedicoViewModel? medicoViewModel = MedicoViewModel.FromEntity(medicoDb);
+            MedicoViewModel? medicoViewModel = MedicoViewModel.FromEntity(medicoDb!);
 
             return medicoViewModel!;
 
@@ -34,12 +34,16 @@ namespace WebClinica.Application.Business
             return new CreatedMedicoViewModel(createdMedicoView);
         }
 
-        public Task Alterar(int crm, UpdateMedicoInputModel updateMedicoInput)
+        public async Task<int> Alterar(int crm, UpdateMedicoInputModel updateMedicoInput)
         {
-            throw new NotImplementedException();
+            Medico medico = updateMedicoInput.ToEntity();
+
+            int result = await medicoRepository.UpdateMedicoAsync(medico, crm);
+
+            return result;
         }
 
-        public Task Delete(int crm)
+        public Task<int> Delete(int crm)
         {
             throw new NotImplementedException();
         }
