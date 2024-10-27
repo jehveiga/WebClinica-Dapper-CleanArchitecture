@@ -45,7 +45,18 @@ namespace WebClinica.Api.Controllers
             int updateResult = await medicoBusiness.Alterar(crm, updateMedicoInput);
 
             if (updateResult == 0)
-                return BadRequest();
+                return NotFound();
+
+            return Ok();
+        }
+
+        [HttpDelete("{crm:int}")]
+        public async Task<ActionResult> Delete(int crm)
+        {
+            int deleteResult = await medicoBusiness.Delete(crm);
+
+            if (deleteResult == 0)
+                return NotFound();
 
             return Ok();
         }

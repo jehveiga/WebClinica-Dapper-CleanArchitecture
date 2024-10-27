@@ -43,9 +43,11 @@ namespace WebClinica.Application.Business
             return result;
         }
 
-        public Task<int> Delete(int crm)
+        public async Task<int> Delete(int crm)
         {
-            throw new NotImplementedException();
+            int result = await medicoRepository.DeleteMedicoAsync(crm);
+
+            return result;
         }
 
 
