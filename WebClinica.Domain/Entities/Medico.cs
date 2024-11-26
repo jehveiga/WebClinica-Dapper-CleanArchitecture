@@ -2,46 +2,54 @@
 {
     public class Medico
     {
-        public Medico(int crm, string nome, char sexo, DateTime dataNascimento)
+        public Medico(string nome, string crm, string especialidade)
         {
-            Crm = crm;
-            Nome = nome;
-            Sexo = sexo;
-            DataNascimento = dataNascimento;
+            SetNome(nome);
+            SetCRM(crm);
+            SetEspecialidade(especialidade);
         }
 
-        public Medico(string nome, char sexo, DateTime dataNascimento, int especialidadeId)
+        public int MedicoID { get; private set; } = 0;
+        public string Nome { get; private set; } = string.Empty;
+        public string CRM { get; private set; } = string.Empty;
+        public string Especialidade { get; private set; } = string.Empty;
+        public string Telefone { get; private set; } = string.Empty;
+        public string Email { get; private set; } = string.Empty;
+        public DateTime DataCadastro { get; private set; } = DateTime.Now;
+
+        private void SetNome(string nome)
         {
+            if (string.IsNullOrWhiteSpace(nome) || nome.Length > 100)
+                throw new ArgumentException("O nome deve ser preenchido e ter no máximo 100 caracteres.");
             Nome = nome;
-            Sexo = sexo;
-            DataNascimento = dataNascimento;
-            EspecialidadeId = especialidadeId;
         }
 
-        public Medico(int crm, string nome, char sexo, DateTime dataNascimento, int especialidadeId)
+        private void SetCRM(string crm)
         {
-            Crm = crm;
-            Nome = nome;
-            Sexo = sexo;
-            DataNascimento = dataNascimento;
-            EspecialidadeId = especialidadeId;
+            if (string.IsNullOrWhiteSpace(crm) || crm.Length > 20)
+                throw new ArgumentException("O CRM deve ser preenchido e ter no máximo 20 caracteres.");
+            CRM = crm;
         }
 
-        public Medico(int crm, string nome, char sexo, DateTime dataNascimento, int especialidadeId, Especialidade especialidade)
+        private void SetEspecialidade(string especialidade)
         {
-            Crm = crm;
-            Nome = nome;
-            Sexo = sexo;
-            DataNascimento = dataNascimento;
-            EspecialidadeId = especialidadeId;
+            if (string.IsNullOrWhiteSpace(especialidade) || especialidade.Length > 100)
+                throw new ArgumentException("A especialidade deve ser preenchida e ter no máximo 100 caracteres.");
             Especialidade = especialidade;
         }
 
-        public int Crm { get; private set; }
-        public string Nome { get; set; }
-        public char Sexo { get; private set; }
-        public DateTime DataNascimento { get; private set; }
-        public int EspecialidadeId { get; private set; }
-        public Especialidade? Especialidade { get; set; }
+        public void SetTelefone(string telefone)
+        {
+            if (!string.IsNullOrWhiteSpace(telefone) && telefone.Length > 20)
+                throw new ArgumentException("O telefone deve ter no máximo 20 caracteres.");
+            Telefone = telefone;
+        }
+
+        public void SetEmail(string email)
+        {
+            if (!string.IsNullOrWhiteSpace(email) && email.Length > 100)
+                throw new ArgumentException("O email deve ter no máximo 100 caracteres.");
+            Email = email;
+        }
     }
 }

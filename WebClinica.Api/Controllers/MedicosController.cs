@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using WebClinica.Application.Business;
 using WebClinica.Application.Dtos.InputModels;
 using WebClinica.Application.Dtos.ViewModels;
@@ -18,7 +19,7 @@ namespace WebClinica.Api.Controllers
         }
 
         [HttpGet("{crm:int}")]
-        public async Task<ActionResult<MedicoViewModel>> GetByCrm(int crm)
+        public async Task<ActionResult<MedicoViewModel>> GetByCrm([Required] int crm)
         {
             MedicoViewModel medicoDto = await medicoBusiness.ObterPeloCrm(crm);
 
@@ -40,7 +41,7 @@ namespace WebClinica.Api.Controllers
         }
 
         [HttpPut("{crm:int}")]
-        public async Task<ActionResult> Put(int crm, UpdateMedicoInputModel updateMedicoInput)
+        public async Task<ActionResult> Put([Required] int crm, UpdateMedicoInputModel updateMedicoInput)
         {
             int updateResult = await medicoBusiness.Alterar(crm, updateMedicoInput);
 
@@ -51,7 +52,7 @@ namespace WebClinica.Api.Controllers
         }
 
         [HttpDelete("{crm:int}")]
-        public async Task<ActionResult> Delete(int crm)
+        public async Task<ActionResult> Delete([Required] int crm)
         {
             int deleteResult = await medicoBusiness.Delete(crm);
 
