@@ -2,16 +2,17 @@
 {
     public class Medico
     {
-        public Medico(string nome, string crm, string especialidade)
+        public Medico(string nome, string crm, string especialidade, string telefone, string email)
         {
             SetNome(nome);
             SetCRM(crm);
             SetEspecialidade(especialidade);
+            SetTelefone(telefone);
         }
 
         public int MedicoID { get; private set; } = 0;
         public string Nome { get; private set; } = string.Empty;
-        public string CRM { get; private set; } = string.Empty;
+        public string Crm { get; private set; } = string.Empty;
         public string Especialidade { get; private set; } = string.Empty;
         public string Telefone { get; private set; } = string.Empty;
         public string Email { get; private set; } = string.Empty;
@@ -28,7 +29,7 @@
         {
             if (string.IsNullOrWhiteSpace(crm) || crm.Length > 20)
                 throw new ArgumentException("O CRM deve ser preenchido e ter no máximo 20 caracteres.");
-            CRM = crm;
+            Crm = crm;
         }
 
         private void SetEspecialidade(string especialidade)

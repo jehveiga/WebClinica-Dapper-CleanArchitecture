@@ -9,14 +9,15 @@ namespace WebClinica.Infrastructure.Queries
         {
             string table = ContextMapping.MedicoTable;
             string query = @$"
-                SELECT 
-                    [CRM] AS Crm, 
-                    [NOME] AS Nome, 
-                    [SEXO] AS Sexo, 
-                    [DATA_NASCIMENTO] AS DataNascimento, 
-                    [ID_ESP] AS EspecialidadeId
-                FROM 
-                    {table}; 
+                SELECT
+                    [NOME] AS Nome,
+                    [CRM] AS Crm,
+                    [Especialidade] AS Especialidade,
+                    [Telefone] AS Telefone,
+                    [Email] AS Email,
+                    [DataCadastro] AS DataCadastro
+                FROM
+                    {table};
             ";
 
             var parameters = new { };
@@ -28,16 +29,17 @@ namespace WebClinica.Infrastructure.Queries
         {
             string table = ContextMapping.MedicoTable;
             string query = @$"
-                SELECT 
-                    [CRM] AS Crm, 
-                    [NOME] AS Nome, 
-                    [SEXO] AS Sexo, 
-                    [DATA_NASCIMENTO] AS DataNascimento, 
-                    [ID_ESP] AS EspecialidadeId
-                FROM 
+                SELECT
+                    [NOME] AS Nome,
+                    [CRM] AS Crm,
+                    [Especialidade] AS Especialidade,
+                    [Telefone] AS Telefone,
+                    [Email] AS Email,
+                    [DataCadastro] AS DataCadastro
+                FROM
                     {table}
                 WHERE
-                    [CRM] = @Crm; 
+                    [CRM] = @Crm;
             ";
 
             var parameters = new
@@ -53,30 +55,33 @@ namespace WebClinica.Infrastructure.Queries
             string table = ContextMapping.MedicoTable;
             string query = @$"
                 INSERT INTO {table}
-                    ([CRM], 
-                    [NOME], 
-                    [SEXO], 
-                    [DATA_NASCIMENTO], 
-                    [ID_ESP])
+                    ([Nome],
+                    [CRM],
+                    [Especialidade],
+                    [Telefone],
+                    [Email],
+                    [DataCadastro])
                 OUTPUT
-                    Inserted.Crm
+                    Inserted.CRM
                 VALUES
                     (
-                        @Crm,
                         @Nome,
-                        @Sexo,
-                        @DataNascimento,
-                        @EspecialidadeId
+                        @Crm,
+                        @Especialidade,
+                        @Telefone,
+                        @Email,
+                        @DataCadastro
                     );
             ";
 
             var parameters = new
             {
-                medico.Crm,
                 medico.Nome,
-                medico.Sexo,
-                medico.DataNascimento,
-                medico.EspecialidadeId
+                medico.Crm,
+                medico.Especialidade,
+                medico.Telefone,
+                medico.Email,
+                medico.DataCadastro
             };
 
             return new QueryModel(query, parameters);
@@ -86,13 +91,13 @@ namespace WebClinica.Infrastructure.Queries
         {
             string table = ContextMapping.MedicoTable;
             string query = @$"
-                UPDATE 
+                UPDATE
                     {table}
                 SET
-                    [NOME] = @Nome, 
-                    [SEXO] = @Sexo, 
-                    [DATA_NASCIMENTO] = @DataNascimento, 
-                    [ID_ESP] = @EspecialidadeId
+                    [NOME] = @Nome,
+                    [Especialidade] = @Especialidade,
+                    [Telefone] = @Telefone,
+                    [Email] = @Email
                 WHERE
                     [CRM] = @Crm
                 ;
@@ -102,9 +107,9 @@ namespace WebClinica.Infrastructure.Queries
             {
                 Crm = crm,
                 medico.Nome,
-                medico.Sexo,
-                medico.DataNascimento,
-                medico.EspecialidadeId
+                medico.Especialidade,
+                medico.Telefone,
+                medico.Email
             };
 
             return new QueryModel(query, parameters);
@@ -114,7 +119,7 @@ namespace WebClinica.Infrastructure.Queries
         {
             string table = ContextMapping.MedicoTable;
             string query = @$"
-                DELETE FROM 
+                DELETE FROM
                     {table}
                 WHERE
                     [CRM] = @Crm
